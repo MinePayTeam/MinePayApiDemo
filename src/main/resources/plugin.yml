@@ -2,7 +2,12 @@ name: MinePayApiDemo
 version: '${project.version}'
 main: top.minepay.example.MinePayApiDemo
 api-version: 1.15
-depend: [ minepay ]
+depend: [ MinePay ]
 authors: [ Peter1303 ]
 description: MinePay API 使用
 website: minepay.top
+
+commands:
+  mpdm:
+    description: minepay_demo
+    usage: /<command>

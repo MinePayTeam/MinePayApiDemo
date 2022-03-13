@@ -1,50 +1,26 @@
 package top.minepay.example;
 
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.ServicePriority;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.minepay.api.MinePayApi;
-import top.minepay.api.events.*;
 import top.minepay.bean.RankItem;
-import top.minepay.example.api.APIImplementation;
+import top.minepay.bean.TradeInfo;
+import top.minepay.enums.PaymentType;
+import top.minepay.enums.TradeType;
+import top.minepay.example.api.MinePayListener;
 
 import java.util.List;
 
-public final class MinePayApiDemo extends JavaPlugin {
+public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor {
 
     @Override
     public void onEnable() {
         // 注册 MinePay 交易事件监听
-        APIImplementation implementation = new APIImplementation();
-        // 开始交易
-        Bukkit.getServicesManager().register(
-                MinePayTradingEvent.class,
-                implementation,
-                this,
-                ServicePriority.Normal);
-        // 延迟取消
-        Bukkit.getServicesManager().register(
-                MinePayPreCancelEvent.class,
-                implementation,
-                this,
-                ServicePriority.Normal);
-        // 取消订单
-        Bukkit.getServicesManager().register(
-                MinePayCancelledEvent.class,
-                implementation,
-                this,
-                ServicePriority.Normal);
-        Bukkit.getServicesManager().register(
-                MinePayTradeOutDatedEvent.class,
-                implementation,
-                this,
-                ServicePriority.Normal);
-        // 完成交易
-        Bukkit.getServicesManager().register(
-                MinePaySuccessEvent.class,
-                implementation,
-                this,
-                ServicePriority.Normal);
+        MinePayListener listener = new MinePayListener();
+        Bukkit.getPluginManager().registerEvents(listener, this);
         // 获取充值排名
         List<RankItem> rankingList = MinePayApi.Info.getRankingList();
     }
@@ -56,5 +32,26 @@ public final class MinePayApiDemo extends JavaPlugin {
 
     @Override
     public void onDisable() {
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender,
+                             Command cmd,
+                             String label,
+                             String[] args) {
+        if (args.length >= 1) {
+            if (args[0].equals("start")) {
+                TradeInfo info = TradeInfo.create(
+                        "订单号",
+                        "礼包名字",
+                        "Peter1303",
+                        100, // 价格的单位是分
+                        TradeType.KIT,
+                        PaymentType.WECHAT // 支付方式 - 微信
+                );
+                MinePayApi.TradeController.start(info);
+            }
+        }
+        return true;
     }
 }
