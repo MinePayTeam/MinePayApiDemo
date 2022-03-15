@@ -21,8 +21,6 @@ public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor 
         // 注册 MinePay 交易事件监听
         MinePayListener listener = new MinePayListener();
         Bukkit.getPluginManager().registerEvents(listener, this);
-        // 获取充值排名
-        List<RankItem> rankingList = MinePayApi.Info.getRankingList();
     }
 
     @Override
@@ -50,6 +48,15 @@ public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor 
                         PaymentType.WECHAT // 支付方式 - 微信
                 );
                 MinePayApi.TradeController.start(info);
+                return true;
+            }
+            if (args[0].equals("rank")) {
+                // 获取充值排名
+                List<RankItem> rankingList = MinePayApi.Info.getRankingList();
+                for (RankItem item : rankingList) {
+                    Bukkit.getConsoleSender()
+                            .sendMessage(item.getPlayerName() + ": " + item.getValue());
+                }
             }
         }
         return true;
