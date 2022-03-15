@@ -46,7 +46,7 @@ public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor 
                         "礼包名字",
                         "Peter1303",
                         100, // 价格的单位是分
-                        TradeType.KIT,
+                        TradeType.POINT,
                         PaymentType.WECHAT // 支付方式 - 微信
                 );
                 MinePayApi.TradeController.start(info);
