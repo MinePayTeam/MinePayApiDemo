@@ -40,7 +40,7 @@ public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor 
             if (args[0].equals("kit")) {
                 TradeInfo info = TradeInfo.createKit(
                         "订单号",
-                        "礼包名字",
+                        "测试点券",
                         "Peter1303",
                         100, // 价格的单位是分
                         PaymentType.WECHAT // 支付方式 - 微信
@@ -51,7 +51,7 @@ public final class MinePayApiDemo extends JavaPlugin implements CommandExecutor 
             if (args[0].equals("point")) {
                 TradeInfo info = TradeInfo.createPoint(
                         "订单号",
-                        "测试点券",
+                        "点券名字",
                         "Peter1303",
                         1, // 点券数量
                         PaymentType.WECHAT // 支付方式 - 微信
