@@ -1,4 +1,4 @@
-package top.minepay.example.api;
+package top.minepay.example.event;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -7,7 +7,7 @@ import top.minepay.api.events.*;
 import top.minepay.bean.TradeInfo;
 
 /**
- * 交易控制
+ * 监听事件
  *
  * @author Peter1303
  * @date Created in 2022/3/8 21:09
