@@ -1,7 +1,6 @@
 package top.minepay.example;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.minepay.example.command.MinePayCommand;
 import top.minepay.example.event.MinePayListener;
