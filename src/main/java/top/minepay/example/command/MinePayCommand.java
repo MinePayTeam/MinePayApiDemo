@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import top.minepay.api.MinePayApi;
 import top.minepay.bean.RankItem;
 import top.minepay.bean.TradeInfo;
-import top.minepay.enums.PaymentType;
+import top.minepay.common.enums.PaymentType;
 
 import java.util.List;
 
