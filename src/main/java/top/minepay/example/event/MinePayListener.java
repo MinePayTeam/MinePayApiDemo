@@ -48,8 +48,8 @@ public class MinePayListener implements Listener {
     @EventHandler
     public void onMinePayTradingEvent(MinePayTradingEvent event) {
         Bukkit.getConsoleSender().sendMessage("trading");
-        // 设置 false 那么 MinePay 将不处理订单，如二维码地图生成等
-        event.setHandled(false);
+        // 默认 true ，设置为 false 那么 MinePay 将不处理订单，如二维码地图生成等
+        event.setHandled(true);
         TradeInfo info = event.getTradeInfo();
         // 获取用于生成二维码的文本内容
         String qrCodeContent = info.getQrcodeContent();
