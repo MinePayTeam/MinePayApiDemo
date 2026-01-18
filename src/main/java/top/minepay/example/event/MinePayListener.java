@@ -5,8 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import top.minepay.api.events.*;
 import top.minepay.bean.TradeInfo;
-import top.minepay.enums.TradeType;
-import top.minepay.enums.PaymentType;
+import top.minepay.common.enums.PaymentType;
+import top.minepay.common.enums.TradeType;
 
 /**
  * 监听事件
@@ -48,7 +48,7 @@ public class MinePayListener implements Listener {
     @EventHandler
     public void onMinePayTradingEvent(MinePayTradingEvent event) {
         Bukkit.getConsoleSender().sendMessage("trading");
-        // 默认 true ，设置为 false 那么 MinePay 将不处理订单，如二维码地图生成等
+        // 设置 false 那么 MinePay 将不处理订单，如二维码地图生成等
         event.setHandled(true);
         TradeInfo info = event.getTradeInfo();
         // 获取用于生成二维码的文本内容
