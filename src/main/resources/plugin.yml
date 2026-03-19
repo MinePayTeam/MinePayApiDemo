@@ -1,5 +1,5 @@
 name: MinePayApiDemo
-version: Release 2.0.0
+version: Release 2.0
 main: top.minepay.example.MinePayApiDemo
 api-version: 1.13
 depend: [ MinePay ]
